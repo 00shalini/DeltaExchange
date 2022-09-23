@@ -22,6 +22,7 @@ const Delta = () => {
         console.log('Connection established');
     }
 
+    
     const apiCall = {
         "type": "subscribe",
         "payload": {
@@ -50,7 +51,7 @@ const Delta = () => {
 
      
   
-  }, []);
+  }, [ENDPOINT]);
   useEffect(() => {
     setTimeout(() => {
         axios
@@ -58,20 +59,21 @@ const Delta = () => {
         .then((res) => {
           setProduct(res.data.result);
         });
-    },5000)
+    },6000)
    
   }, []);
   return (
- 
-    <Paper sx={{ width: '90%', overflow: 'hidden', marginTop:'100px', marginLeft:'100px' }}>
-    <TableContainer sx={{ maxHeight: 440 }}>
+   <div>
+    <h3 style={{fontSize:'20px', frontWeight:'600', textAlign:'center'}}>Getting Data Through Socket</h3>
+ <Paper sx={{ width: '90%', overflow: 'hidden', marginTop:'100px', marginLeft:'80px' }}>
+    <TableContainer sx={{ maxHeight: 500 }}>
       <Table stickyHeader aria-label="sticky table">
         <TableHead>
-          <TableRow style={{color:"white"}}>
-          <TableCell>Symbol</TableCell>
-             <TableCell align="center">Description</TableCell>
-             <TableCell align="center">Underlying Asset</TableCell>
-            <TableCell align="center">Mark Price</TableCell>
+          <TableRow style={{backgroundColor:'gray'}}>
+          <TableCell align="center" style={{fontWeight:'800', fontSize:'15px'}}>Symbol</TableCell>
+             <TableCell align="center"style={{fontWeight:'800', fontSize:'15px'}}>Description</TableCell>
+             <TableCell align="center" style={{fontWeight:'800', fontSize:'15px'}}>Underlying Asset</TableCell>
+            <TableCell align="center"style={{fontWeight:'800', fontSize:'15px'}}>Mark Price</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -79,7 +81,7 @@ const Delta = () => {
           {product?.map((row) => {
               return (
                 <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                    <TableCell component="th" scope="row">
+                    <TableCell component="th" scope="row" align="center">
                {row.symbol}
              </TableCell>
              <TableCell align="center">{row.description}</TableCell>
@@ -93,6 +95,8 @@ const Delta = () => {
     </TableContainer>
    
   </Paper>
+   </div>
+   
   );
 };
 
