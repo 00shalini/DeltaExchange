@@ -1,13 +1,11 @@
 import logo from './logo.svg';
-import './App.css';
-import TopNav from './Components/TopNav';
-import SideNav from './Components/SideNav';
-import ManageAccount from './screens/ManageAccount';
+
+import Delta from './Components/Delta';
 
 function App() {
   return (
     <div>
-      
+      <Delta/>
     </div>
   );
 }
